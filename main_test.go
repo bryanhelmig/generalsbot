@@ -12,7 +12,7 @@ func TestNothing(t *testing.T) {
 	// main()
 }
 
-func TestGameUpdateInterface(t *testing.T) {
+func getGameUpdate() GameUpdate {
 	var err error
 
 	var byt []byte
@@ -21,12 +21,17 @@ func TestGameUpdateInterface(t *testing.T) {
 		panic(err)
 	}
 
-	var dat GameUpdate
-	err = json.Unmarshal(byt, &dat)
+	var data GameUpdate
+	err = json.Unmarshal(byt, &data)
 	if err != nil {
 		panic(err)
 	}
-	log.Println(dat)
+	return data
+}
+
+func TestGameUpdateInterface(t *testing.T) {
+	data := getGameUpdate()
+	log.Println(data)
 }
 
 func TestGameStartInterface(t *testing.T) {
@@ -38,10 +43,17 @@ func TestGameStartInterface(t *testing.T) {
 		panic(err)
 	}
 
-	var dat GameStart
-	err = json.Unmarshal(byt, &dat)
+	var data GameStart
+	err = json.Unmarshal(byt, &data)
 	if err != nil {
 		panic(err)
 	}
-	log.Println(dat)
+	log.Println(data)
+}
+
+func TestGameMap(t *testing.T) {
+	gameMap := GameMap{}
+	data := getGameUpdate()
+	gameMap.patch(data.MapDiff)
+	log.Println("\n" + gameMap.makeMap())
 }
