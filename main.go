@@ -37,23 +37,21 @@ func connect() *gosocketio.Client {
 func main() {
 	var err error
 
-	var playerIndex int
-	gameMap := GameMap{}
+	game := Game{}
 
 	c := connect()
 
-	err = c.On("game_start", func(h *gosocketio.Channel, data GameStart) {
-		playerIndex = data.PlayerIndex
-		log.Println("On game_start: ", data)
+	err = c.On("game_start", func(h *gosocketio.Channel, gameStart GameStart) {
+		game.start(gameStart)
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = c.On("game_update", func(h *gosocketio.Channel, data GameUpdate) {
-		gameMap.patch(data.MapDiff)
-		log.Println("Update taken", gameMap.width(), gameMap.height())
-		log.Println(gameMap.makeMap())
+	err = c.On("game_update", func(h *gosocketio.Channel, gameUpdate GameUpdate) {
+		game.update(gameUpdate)
+		game.printMap()
+		// game.printCityMap()
 	})
 	if err != nil {
 		log.Fatal(err)

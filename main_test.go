@@ -7,9 +7,27 @@ import (
 	"testing"
 )
 
-func TestNothing(t *testing.T) {
-	log.Println("test!")
-	// main()
+func getGameStart() GameStart {
+
+	var err error
+
+	var byt []byte
+	byt, err = ioutil.ReadFile("json/game_start.json")
+	if err != nil {
+		panic(err)
+	}
+
+	var gameStart GameStart
+	err = json.Unmarshal(byt, &gameStart)
+	if err != nil {
+		panic(err)
+	}
+	return gameStart
+}
+
+func TestGameStartInterface(t *testing.T) {
+	gameStart := getGameStart()
+	log.Println(gameStart)
 }
 
 func getGameUpdate() GameUpdate {
@@ -21,39 +39,28 @@ func getGameUpdate() GameUpdate {
 		panic(err)
 	}
 
-	var data GameUpdate
-	err = json.Unmarshal(byt, &data)
+	var gameUpdate GameUpdate
+	err = json.Unmarshal(byt, &gameUpdate)
 	if err != nil {
 		panic(err)
 	}
-	return data
+	return gameUpdate
 }
 
 func TestGameUpdateInterface(t *testing.T) {
-	data := getGameUpdate()
-	log.Println(data)
-}
-
-func TestGameStartInterface(t *testing.T) {
-	var err error
-
-	var byt []byte
-	byt, err = ioutil.ReadFile("json/game_start.json")
-	if err != nil {
-		panic(err)
-	}
-
-	var data GameStart
-	err = json.Unmarshal(byt, &data)
-	if err != nil {
-		panic(err)
-	}
-	log.Println(data)
+	gameUpdate := getGameUpdate()
+	log.Println(gameUpdate)
 }
 
 func TestGameMap(t *testing.T) {
-	gameMap := GameMap{}
-	data := getGameUpdate()
-	gameMap.patch(data.MapDiff)
-	log.Println("\n" + gameMap.makeMap())
+	game := Game{}
+
+	gameStart := getGameStart()
+	game.start(gameStart)
+
+	gameUpdate := getGameUpdate()
+	game.update(gameUpdate)
+
+	log.Println("\n" + game.makeMap())
+	// log.Println("\n" + game.makeCityMap())
 }
