@@ -1,15 +1,21 @@
 # A dumb generals.io bot in Go
 
-It doesn't even do random moves yet.
+~~It doesn't even do random moves yet.~~ It totally runs a random strategy.
 
 But does have most of the logistics wired in.
 
 ```bash
+# just prep it
 git clone https://github.com/bryanhelmig/generalsbot
 cd generalsbot
 go get
+
+# just test it
 go test
-go run main.go constants.go strategy.go events.go game.go
+
+# just run it
+go run main.go core.go constants.go strategy.go types.go
+# now join the printed URL on the screen
 ```
 
 Forgive the Go newbishness.

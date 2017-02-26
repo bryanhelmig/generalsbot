@@ -1,0 +1,31 @@
+{
+  "scores": [
+    {
+      "total": 2,
+      "tiles": 1,
+      "i": 0,
+      "dead": false
+    },
+    {
+      "total": 2,
+      "tiles": 1,
+      "i": 1,
+      "dead": false
+    }
+  ],
+  "turn": 2,
+  "attackIndex": 0,
+  "generals": [
+    343,
+    -1
+  ],
+  "map_diff": [
+    345,
+    1,
+    2,
+    492
+  ],
+  "cities_diff": [
+    0
+  ]
+}

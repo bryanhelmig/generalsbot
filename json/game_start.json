@@ -1,11 +1,10 @@
 {
-  "playerIndex": 1,
-  "replay_id": "SeB6AI1ce",
-  "chat_room": "game_1488051901476rUTJcHXmZ4FJWHswAABy",
-  "team_chat_room": "game_1488051901476rUTJcHXmZ4FJWHswAABy_team_2",
+  "playerIndex": 0,
+  "replay_id": "rl9CIllqe",
+  "chat_room": "game_1488090833789RbUPomJiMbjbm8JZAAnF",
   "usernames": [
-    "catcatcat",
-    "[Bot] Henry"
+    "[Bot] Henry",
+    "catcatcat"
   ],
   "teams": [
     1,
