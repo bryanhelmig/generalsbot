@@ -13,3 +13,21 @@ go run main.go constants.go strategy.go events.go game.go
 ```
 
 Forgive the Go newbishness.
+
+### Features
+
+While it runs, it prints the grid to stdout:
+
+![](https://cdn.zapier.com/storage/photos/142c31ba28fececb40b4e6b49c2d325c.png)
+
+![](https://cdn.zapier.com/storage/photos/8d419bbdc24fd632d62a4e968b4587f3.png)
+
+### Upcoming
+
+Pluggable strategies with preferences game stage. For example:
+
+1. No enemies seen yet? `Explore` strategy will want to make the moves.
+2. Seen an enemy but haven't seen seen their general? `Hunt` strategy should be preferred.
+3. Seen a general? `BuildThenRush` strategy will be preferred.
+4. Enemy seen us and still alive? `Defend` strategy will be preferred.
+5. etc...
