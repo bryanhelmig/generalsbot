@@ -1,5 +1,6 @@
 package main
 
+// yeah, this userID is "secret" or whatever
 const userID = "ob4zsd672"
 const userName = "[Bot] Henry"
 const gameID = "henrysgame"
